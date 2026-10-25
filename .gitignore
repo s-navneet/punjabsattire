@@ -1,0 +1,9 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local secrets & environment configuration
+.env
+.env.local
+assets/js/config.local.js
+
