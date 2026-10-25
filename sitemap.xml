@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://punjabsattire.in/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://punjabsattire.in/assets/images/background.png</image:loc>
+      <image:title>Punjab's Attire - Trendy Shirts, T-Shirts, Lowers and Jeans</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://punjabsattire.in/assets/images/logo.png</image:loc>
+      <image:title>Punjab's Attire Official Logo</image:title>
+    </image:image>
+  </url>
+</urlset>
+
