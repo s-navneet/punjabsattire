@@ -26,7 +26,7 @@ body {
 
 /* Hero Section Background */
 .hero-banner {
-    background-image: url('../images/background.jpg?v=2');
+    background-image: url('../images/background.png');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
