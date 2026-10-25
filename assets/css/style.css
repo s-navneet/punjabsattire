@@ -1,0 +1,47 @@
+/* ========================================================
+   Punjab's Attire - Custom Stylesheet
+   ======================================================== */
+
+:root {
+    --brand-gold: #e5a93c;
+    --brand-gold-light: #f3cf7a;
+    --brand-gold-dark: #b88628;
+    --brand-navy: #070e1b;
+    --brand-navy-card: #0b1528;
+    --brand-navy-header: #0b192c;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--brand-navy);
+    color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.serif-title {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Hero Section Background */
+.hero-banner {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+/* Fallback subtle vignette on small mobile screens to keep center text high-contrast */
+@media (max-width: 768px) {
+    .hero-mobile-overlay {
+        background: radial-gradient(circle at center, rgba(7, 14, 27, 0.88) 0%, rgba(7, 14, 27, 0.65) 100%);
+    }
+}
+
+/* Custom gold glow on input focus */
+.gold-focus:focus-within {
+    border-color: #e5a93c;
+    box-shadow: 0 0 18px rgba(229, 169, 60, 0.35);
+}
+
