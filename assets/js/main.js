@@ -1,11 +1,12 @@
 /**
  * Punjab's Attire - Main JavaScript
- * Handles waitlist lead capture and Google Sheets integration
+ * Handles waitlist lead capture (WhatsApp & Email) and Google Sheets integration
  */
 
 // ============================================================
 // CONFIGURATION: Injected automatically by GitHub Actions secret
 // In local development, you can define window.LOCAL_GOOGLE_SHEET_URL
+// in assets/js/config.local.js (which is ignored by git)
 // ============================================================
 const INJECTED_URL = '{{GOOGLE_SHEET_URL}}';
 const GOOGLE_SHEET_URL = (INJECTED_URL && !INJECTED_URL.startsWith('{{'))
@@ -14,17 +15,18 @@ const GOOGLE_SHEET_URL = (INJECTED_URL && !INJECTED_URL.startsWith('{{'))
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('notify-form');
+    const phoneInput = document.getElementById('phone-input');
     const emailInput = document.getElementById('email-input');
     const botCheck = document.getElementById('bot-check');
     const feedback = document.getElementById('notify-feedback');
     const btn = document.getElementById('notify-btn');
 
     // Check if user previously subscribed in this browser
-    const savedEmail = localStorage.getItem('pa_subscribed_email');
-    if (savedEmail && feedback) {
+    const savedContact = localStorage.getItem('pa_subscribed_contact') || localStorage.getItem('pa_subscribed_email');
+    if (savedContact && feedback) {
         feedback.innerHTML = `
-            <span class="text-[#e5a93c] font-medium">
-                ✨ You're already on our VIP waitlist (${savedEmail})! We'll notify you first.
+            <span class="text-[#e5a93c] font-medium text-xs sm:text-sm">
+                ✨ You're on our VIP waitlist (${savedContact})! We'll notify you first.
             </span>
         `;
         feedback.classList.remove('hidden');
@@ -40,8 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const email = emailInput.value.trim();
-            if (!email) return;
+            const phone = phoneInput ? phoneInput.value.trim() : '';
+            const email = emailInput ? emailInput.value.trim() : '';
+
+            // Validation: User must provide at least one contact method
+            if (!phone && !email) {
+                if (feedback) {
+                    feedback.innerHTML = `
+                        <div class="p-2.5 bg-amber-950/70 border border-amber-500/50 rounded-xl text-amber-300 text-xs shadow-md">
+                            ⚠️ Please provide your WhatsApp number or email address.
+                        </div>
+                    `;
+                    feedback.classList.remove('hidden');
+                }
+                if (phoneInput) phoneInput.focus();
+                return;
+            }
 
             // Visual loading state
             const originalBtnText = btn.innerHTML;
@@ -49,48 +65,51 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = `<span class="inline-flex items-center gap-1.5"><svg class="animate-spin w-4 h-4 text-black" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> SENDING...</span>`;
 
             try {
-                // If a Google Sheets URL is configured, post to it
+                // Dispatch to Google Apps Script endpoint
                 if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL.trim() !== '') {
-                    const params = new URLSearchParams();
-                    params.append('email', email);
-                    params.append('timestamp', new Date().toISOString());
+                    console.log('Submitting to Google Sheet...', { phone, email });
+                    const formData = new FormData();
+                    if (phone) formData.append('phone', phone);
+                    if (email) formData.append('email', email);
+                    formData.append('timestamp', new Date().toISOString());
 
                     await fetch(GOOGLE_SHEET_URL, {
                         method: 'POST',
                         mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: params.toString()
+                        body: formData
                     });
+                    console.log('Submission sent successfully to Google Sheet.');
                 }
 
                 // Persist subscription in browser storage
-                localStorage.setItem('pa_subscribed_email', email);
+                const primaryContact = phone || email;
+                localStorage.setItem('pa_subscribed_contact', primaryContact);
 
                 // Update button visual state
-                btn.innerHTML = `✓ NOTIFIED`;
+                btn.innerHTML = `✓ ADDED TO VIP LIST`;
                 btn.classList.add('opacity-85', 'cursor-default');
 
                 // Display friendly success feedback
                 if (feedback) {
+                    const notifyTarget = phone ? `WhatsApp (${phone})` : `email (${email})`;
                     feedback.innerHTML = `
-                        <div class="p-3.5 bg-emerald-950/70 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs sm:text-sm shadow-xl backdrop-blur-sm animate-fade-in">
-                            🎉 <strong>Thank you!</strong> You've been added to our VIP launch list. 
+                        <div class="p-3.5 bg-emerald-950/75 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs sm:text-sm shadow-xl backdrop-blur-sm animate-fade-in">
+                            🎉 <strong>Thank you!</strong> You're on our launch list. We'll reach out to your ${notifyTarget}. 
                             <a href="https://chat.whatsapp.com/Fs37cZAzrcT5xDpqOVY6xR?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="underline text-[#e5a93c] font-semibold hover:text-yellow-200 ml-1">
-                                Join our WhatsApp Group
-                            </a> for exclusive preview drops!
+                                Click here to join our WhatsApp VIP Group
+                            </a> for instant updates!
                         </div>
                     `;
                     feedback.classList.remove('hidden');
                 }
 
-                emailInput.value = '';
+                if (phoneInput) phoneInput.value = '';
+                if (emailInput) emailInput.value = '';
 
             } catch (error) {
                 console.error('Waitlist submission error:', error);
-                // Fallback: still save locally so visitor is not frustrated
-                localStorage.setItem('pa_subscribed_email', email);
+                const primaryContact = phone || email;
+                localStorage.setItem('pa_subscribed_contact', primaryContact);
 
                 btn.disabled = false;
                 btn.innerHTML = originalBtnText;
@@ -98,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (feedback) {
                     feedback.innerHTML = `
                         <div class="p-3.5 bg-yellow-950/60 border border-yellow-500/40 rounded-xl text-yellow-300 text-xs sm:text-sm shadow-xl">
-                            Saved locally! Also feel free to <a href="https://chat.whatsapp.com/Fs37cZAzrcT5xDpqOVY6xR?s=cl&p=a&mlu=4&ilr=4" target="_blank" class="underline font-bold text-white">join our WhatsApp group</a> directly.
+                            Saved locally! You can also <a href="https://chat.whatsapp.com/Fs37cZAzrcT5xDpqOVY6xR?s=cl&p=a&mlu=4&ilr=4" target="_blank" class="underline font-bold text-white">join our WhatsApp VIP group</a> directly.
                         </div>
                     `;
                     feedback.classList.remove('hidden');

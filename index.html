@@ -6,6 +6,9 @@
     <title>Punjab's Attire | Something Is Coming Soon</title>
     <meta name="description" content="Your Everyday Style Destination - Trendy Shirts, Premium T-Shirts, Comfortable Lowers & More. Coming Soon to Punjab's Attire.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,22 +18,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Custom Project Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#e5a93c] selection:text-black">
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-[#0b192c]/95 backdrop-blur-md border-b border-[#d4af37]/30 px-4 sm:px-8 md:px-12 py-3.5 flex justify-between items-center transition-all duration-300">
         <!-- Brand Logo -->
-        <a href="#" class="flex items-center space-x-3 group">
-            <div class="w-10 h-10 rounded-full border border-[#e5a93c] flex items-center justify-center bg-[#070e1b] shadow-[0_0_10px_rgba(229,169,60,0.2)] group-hover:border-yellow-300 transition">
-                <!-- Royal Emblem Icon -->
-                <svg class="w-6 h-6 text-[#e5a93c]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.5C7.8 2.5 4.5 5 4 8.5c-1.3 1.1-1.8 3-.9 4.8.8 1.6 2.4 2.4 4.4 2.4.4 0 .9 0 1.3-.1.8.8 1.9 1.4 3.2 1.4s2.4-.6 3.2-1.4c.4.1.9.1 1.3.1 2 0 3.6-.8 4.4-2.4.9-1.8.4-3.7-.9-4.8-.5-3.5-3.8-6-8-6zm0 16c-2.2 0-4.2.6-5.5 2-.3.3-.1.8.3.8 2.4-.4 4.8-.4 7.2 0 .4 0 .6-.5.3-.8-1.3-1.4-3.3-2-5.5-2z"/>
-                    <circle cx="12" cy="7" r="1.5" fill="#070e1b"/>
-                </svg>
+        <a href="#" class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-full border border-[#e5a93c] overflow-hidden flex items-center justify-center bg-[#070e1b] shadow-[0_0_10px_rgba(229,169,60,0.25)] shrink-0">
+                <img src="assets/images/logo.png" alt="Punjab's Attire Logo" class="w-full h-full object-cover">
             </div>
-            <span class="serif-title text-lg sm:text-xl md:text-2xl font-bold tracking-wider text-[#e5a93c] group-hover:text-yellow-300 transition">
+            <span class="serif-title text-lg sm:text-xl md:text-2xl font-bold tracking-wider text-[#e5a93c]">
                 PUNJAB'S ATTIRE
             </span>
         </a>
@@ -127,22 +126,36 @@
 
             </div>
 
-            <!-- Email Notification Subscription Form -->
-            <form id="notify-form" class="w-full max-w-lg mx-auto mb-6">
+            <!-- Notification Subscription Form (WhatsApp & Email) -->
+            <form id="notify-form" class="w-full max-w-xl mx-auto mb-6">
                 <!-- Anti-Spam Bot Honeypot (Hidden from humans) -->
                 <input type="text" name="_bot_check" id="bot-check" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
-                <div class="gold-focus flex flex-col sm:flex-row items-center bg-[#071120]/85 border border-[#d4af37]/50 rounded-xl sm:rounded-full p-1.5 backdrop-blur-md shadow-2xl transition duration-300">
-                    <div class="flex items-center pl-3.5 w-full">
-                        <!-- Email Envelope Icon -->
-                        <svg class="w-5 h-5 text-gray-400 shrink-0 mr-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        <input type="email" id="email-input" required placeholder="Enter your email address" class="w-full bg-transparent text-sm md:text-base text-gray-100 placeholder-gray-400 focus:outline-none py-2.5 pr-2">
+                
+                <div class="bg-[#071120]/90 border border-[#d4af37]/45 rounded-2xl p-2 sm:p-2.5 backdrop-blur-md shadow-2xl transition duration-300">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                        <!-- WhatsApp / Phone Input -->
+                        <div class="flex items-center bg-[#0b172a]/90 border border-slate-700/60 rounded-xl px-3 py-2.5 gold-focus transition">
+                            <svg class="w-5 h-5 text-[#25D366] shrink-0 mr-2.5 fill-current" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                            <input type="tel" id="phone-input" name="phone" autocomplete="tel" placeholder="WhatsApp / Mobile number" class="w-full bg-transparent text-xs sm:text-sm text-gray-100 placeholder-gray-400 focus:outline-none">
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="flex items-center bg-[#0b172a]/90 border border-slate-700/60 rounded-xl px-3 py-2.5 gold-focus transition">
+                            <svg class="w-5 h-5 text-gray-400 shrink-0 mr-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <input type="email" id="email-input" name="email" autocomplete="email" placeholder="Email address (optional)" class="w-full bg-transparent text-xs sm:text-sm text-gray-100 placeholder-gray-400 focus:outline-none">
+                        </div>
                     </div>
-                    <button type="submit" id="notify-btn" class="w-full sm:w-auto shrink-0 bg-gradient-to-r from-[#e5a93c] to-[#d4af37] hover:brightness-110 active:scale-95 text-[#070e1b] font-bold px-7 py-3 rounded-lg sm:rounded-full text-xs md:text-sm tracking-wider uppercase transition shadow-lg whitespace-nowrap mt-2 sm:mt-0">
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="notify-btn" class="w-full bg-gradient-to-r from-[#e5a93c] to-[#d4af37] hover:brightness-110 active:scale-[0.99] text-[#070e1b] font-bold py-3 rounded-xl text-xs sm:text-sm tracking-wider uppercase transition shadow-lg flex items-center justify-center">
                         GET NOTIFIED
                     </button>
                 </div>
+                <p class="text-[11px] text-gray-400 mt-2 text-center">Add WhatsApp number, email, or both &ndash; we'll notify you first.</p>
                 <!-- Dynamic Feedback Message -->
                 <div id="notify-feedback" class="mt-3 text-xs md:text-sm hidden transition-all duration-300"></div>
             </form>
@@ -178,6 +191,7 @@
     <footer class="py-8 px-6 text-center border-t border-yellow-600/20 text-sm text-gray-400 bg-[#070e1b]">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-2">
+                <img src="assets/images/logo.png" alt="Punjab's Attire Logo" class="w-6 h-6 rounded-full border border-[#e5a93c]/50 inline-block">
                 <span class="serif-title font-bold text-base text-[#e5a93c]">PUNJAB'S ATTIRE</span>
                 <span class="text-gray-600">|</span>
                 <span class="text-xs text-gray-400">Pune, Maharashtra</span>
@@ -186,6 +200,8 @@
         </div>
     </footer>
 
+    <!-- Optional Local Dev Config (Ignored in Git, loads local secret if present) -->
+    <script src="assets/js/config.local.js" onerror="this.remove()"></script>
     <!-- Main JavaScript Bundle -->
     <script src="assets/js/main.js" defer></script>
 </body>

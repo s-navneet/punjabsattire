@@ -46,16 +46,22 @@ To capture customer emails automatically into your private Google Sheet:
      try {
        var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
        
+       // Ensure header row exists
        if (sheet.getLastRow() === 0) {
-         sheet.appendRow(["Timestamp (IST)", "Email", "Status"]);
-         sheet.getRange(1, 1, 1, 3).setFontWeight("bold").setBackground("#0b192c").setFontColor("#e5a93c");
+         sheet.appendRow(["Timestamp (IST)", "Phone / WhatsApp", "Email", "Status"]);
+         sheet.getRange(1, 1, 1, 4).setFontWeight("bold").setBackground("#0b192c").setFontColor("#e5a93c");
+       } else if (sheet.getRange(1, 2).getValue() === "Email") {
+         // Auto-insert Phone column if upgrading from previous 3-column setup
+         sheet.insertColumnBefore(2);
+         sheet.getRange(1, 2).setValue("Phone / WhatsApp").setFontWeight("bold").setBackground("#0b192c").setFontColor("#e5a93c");
        }
        
+       var phone = (e.parameter && e.parameter.phone) || "";
        var email = (e.parameter && e.parameter.email) || "";
        var timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
        
-       if (email) {
-         sheet.appendRow([timestamp, email, "Subscribed"]);
+       if (phone || email) {
+         sheet.appendRow([timestamp, phone ? "'" + phone : "", email, "Subscribed"]);
        }
        
        return ContentService.createTextOutput(JSON.stringify({ result: "success" }))
