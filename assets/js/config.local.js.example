@@ -1,0 +1,11 @@
+/**
+ * Local Development Configuration
+ * 
+ * To test Google Sheets submission locally:
+ * 1. Duplicate this file and rename it to 'config.local.js' (it is already in .gitignore).
+ * 2. In index.html, temporarily add <script src="assets/js/config.local.js"></script> before main.js.
+ * 3. Never commit 'config.local.js' to git!
+ */
+
+window.LOCAL_GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycby5sRR7dpIz1Hlv18-s4lDh5Xl5AgzrRqFHTbMWXH7NhcV1kyscmvilxLtH4TCx8xhG/exec';
+
