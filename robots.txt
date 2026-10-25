@@ -1,0 +1,7 @@
+# Punjab's Attire - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://punjabsattire.in/sitemap.xml
+

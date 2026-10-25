@@ -25,9 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedContact = localStorage.getItem('pa_subscribed_contact') || localStorage.getItem('pa_subscribed_email');
     if (savedContact && feedback) {
         feedback.innerHTML = `
-            <span class="text-[#e5a93c] font-medium text-xs sm:text-sm">
-                ✨ You're on our VIP waitlist (${savedContact})! We'll notify you first.
-            </span>
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#091528]/95 border border-[#e5a93c]/60 rounded-xl text-[#f5d78e] text-xs sm:text-sm font-medium shadow-2xl backdrop-blur-md animate-fade-in">
+                <span class="text-base text-[#e5a93c]">✨</span>
+                <span>You're on our VIP waitlist (<strong class="text-white font-semibold">${savedContact}</strong>)! We'll notify you first.</span>
+            </div>
         `;
         feedback.classList.remove('hidden');
     }
@@ -93,9 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (feedback) {
                     const notifyTarget = phone ? `WhatsApp (${phone})` : `email (${email})`;
                     feedback.innerHTML = `
-                        <div class="p-3.5 bg-emerald-950/75 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs sm:text-sm shadow-xl backdrop-blur-sm animate-fade-in">
+                        <div class="p-3.5 bg-emerald-950/90 border border-emerald-400/50 rounded-xl text-emerald-200 text-xs sm:text-sm shadow-xl backdrop-blur-md animate-fade-in">
                             🎉 <strong>Thank you!</strong> You're on our launch list. We'll reach out to your ${notifyTarget}. 
-                            <a href="https://chat.whatsapp.com/Fs37cZAzrcT5xDpqOVY6xR?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="underline text-[#e5a93c] font-semibold hover:text-yellow-200 ml-1">
+                            <a href="https://chat.whatsapp.com/Fs37cZAzrcT5xDpqOVY6xR?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="underline text-[#f5d78e] font-semibold hover:text-white ml-1">
                                 Click here to join our WhatsApp VIP Group
                             </a> for instant updates!
                         </div>

@@ -26,10 +26,11 @@ body {
 
 /* Hero Section Background */
 .hero-banner {
-    background-image: url('../images/background.png');
+    background-image: url('../images/background.png?v=5');
     background-size: cover;
-    background-position: center top;
+    background-position: center bottom;
     background-repeat: no-repeat;
+    background-color: var(--brand-navy);
 }
 
 /* Fallback subtle vignette on small mobile screens to keep center text high-contrast */
