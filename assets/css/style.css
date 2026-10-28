@@ -11,6 +11,11 @@
     --brand-navy-header: #0b192c;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--brand-navy);
@@ -24,26 +29,38 @@ body {
     font-family: 'Playfair Display', Georgia, serif;
 }
 
-/* Hero Section Background */
+/* Hero Section Background (Responsive & High-Performance) */
 .hero-banner {
-    background-image: url('../images/background.png?v=5');
+    background-image: url('../images/background.jpg?v=6');
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
     background-color: var(--brand-navy);
 }
 
-/* Fallback subtle vignette on small mobile screens to keep center text high-contrast */
+/* Mobile-Optimized Lightweight Hero Background (124 KB vs 2.8 MB) */
 @media (max-width: 768px) {
+    .hero-banner {
+        background-image: url('../images/background-mobile.jpg?v=6');
+        background-position: center bottom;
+    }
+
     .hero-mobile-overlay {
-        background: radial-gradient(circle at center, rgba(7, 14, 27, 0.88) 0%, rgba(7, 14, 27, 0.65) 100%);
+        background: radial-gradient(circle at center, rgba(7, 14, 27, 0.90) 0%, rgba(7, 14, 27, 0.72) 100%);
+    }
+
+    /* Prevent iOS Safari auto-zoom on mobile inputs */
+    input[type="tel"],
+    input[type="email"],
+    input[type="text"] {
+        font-size: 16px !important;
     }
 }
 
 /* Custom gold glow on input focus */
 .gold-focus:focus-within {
     border-color: #e5a93c;
-    box-shadow: 0 0 18px rgba(229, 169, 60, 0.35);
+    box-shadow: 0 0 16px rgba(229, 169, 60, 0.35);
 }
 
 /* Smooth fade-in animation for notifications */

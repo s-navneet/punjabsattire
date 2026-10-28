@@ -7,8 +7,12 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://punjabsattire.in/assets/images/background.png</image:loc>
+      <image:loc>https://punjabsattire.in/assets/images/background.jpg</image:loc>
       <image:title>Punjab's Attire - Trendy Shirts, T-Shirts, Lowers and Jeans</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://punjabsattire.in/assets/images/background-mobile.jpg</image:loc>
+      <image:title>Punjab's Attire - Menswear Everyday Street Style</image:title>
     </image:image>
     <image:image>
       <image:loc>https://punjabsattire.in/assets/images/logo.png</image:loc>
