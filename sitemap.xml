@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://punjabsattire.in/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +12,11 @@
     </image:image>
     <image:image>
       <image:loc>https://punjabsattire.in/assets/images/logo.png</image:loc>
-      <image:title>Punjab's Attire Official Logo</image:title>
+      <image:title>Punjab's Attire Official Brand Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://punjabsattire.in/assets/images/favicon.png</image:loc>
+      <image:title>Punjab's Attire Favicon</image:title>
     </image:image>
   </url>
 </urlset>
