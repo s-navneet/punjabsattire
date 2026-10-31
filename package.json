@@ -1,0 +1,20 @@
+{
+  "name": "punjabsattire",
+  "version": "1.0.0",
+  "description": "Punjab's Attire — Official Landing Page & Brand Portal",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "node scripts/build.js --watch",
+    "dev": "node scripts/build.js --watch",
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "punjabsattire",
+    "menswear",
+    "pune",
+    "landing-page"
+  ],
+  "author": "Punjab's Attire Team",
+  "license": "UNLICENSED"
+}
